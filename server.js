@@ -9,14 +9,19 @@ const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
+console.log(process.env.POSTGRES_HOST);
+console.log(process.env.POSTGRES_USER);
+console.log(process.env.POSTGRES_PASSWORD);
+console.log(process.env.POSTGRES_DB);
+
 const db = knex({
   client: 'pg',
   connection: {
-    host: 'ec2-54-243-142-182.compute-1.amazonaws.com',
-    user: 'lgqxugxlyrlldm',
-    password: 'd2e0213631661cb1b6bc26370cc834cbfe7aba0b4347f52acf0e2f7f8c5c947b',
-    database: 'daigod15kmgf8t',
-    ssl: true
+    host: process.env.POSTGRES_HOST,
+    user: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD,
+    database: process.env.POSTGRES_DB,
+    ssl: false
   }
 });
 
